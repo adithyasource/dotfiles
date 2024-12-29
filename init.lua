@@ -45,7 +45,8 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover)
 vim.keymap.set("n", "H", vim.lsp.buf.definition)
 vim.keymap.set("i", "<esc>", "<esc>:pclose<cr>")
 
--- git clone --depth=1 https://github.com/neovim/nvim-lspconfig ~/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig
+-- (macos) git clone --depth=1 https://github.com/neovim/nvim-lspconfig ~/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig
+-- (windows) git clone --depth=1 https://github.com/neovim/nvim-lspconfig %localappdata%/nvim-data/site/pack/plugins/start/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local lsp = require("lspconfig")
 lsp.html.setup({})
