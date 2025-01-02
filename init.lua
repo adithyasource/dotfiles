@@ -48,7 +48,7 @@ vim.keymap.set("i", "<esc>", "<esc>:pclose<cr>")
 
 -- (macos) git clone --depth=1 https://github.com/neovim/nvim-lspconfig ~/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig
 -- (windows) git clone --depth=1 https://github.com/neovim/nvim-lspconfig %localappdata%/nvim-data/site/pack/plugins/start/nvim-lspconfig
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+-- [docs] https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local lsp = require("lspconfig")
 lsp.html.setup({})
 lsp.denols.setup({})
