@@ -1,22 +1,26 @@
+; INFO this script file only works with ahk v1
+
 ; disable caps lock
 ; cause caps lock is also the fn key on my keyboard
 ; [stolen from www.autohotkey.com/board/topic/51215-completely-disable-capslock/?p=320194]
-
 SetCapsLockState, alwaysoff
 
-; open volume mixer on win+g
-; [stolen from https://www.autohotkey.com/boards/viewtopic.php?p=66433&sid=7b2f57527f13cabdb384a8219c58b673#p66433]
-
-#g::
-Run C:\Windows\System32\SndVol.exe
-WinWait, ahk_exe SndVol.exe
-If WinExist("ahk_exe SndVol.exe")  
-WinActivate, ahk_exe SndVol.exe
+; always on top
+^+SPACE::
+	WinGetTitle, activeWindow, A
+	Winset, Alwaysontop, , A
 Return
+
+; media keys
+RAlt & Space::Send, {Media_Play_Pause}
+^!Left::Send, {Media_Prev}
+^!Right::Send, {Media_Next}
+^!M::Send, {Volume_Mute}
+RShift::Send, {Volume_Up}
+RCtrl::Send, {Volume_Down}
 
 ; switching desktops
 ; [stolen from https://www.autohotkey.com/boards/viewtopic.php?p=491217&sid=d9047a5a1ef1fb914774e0d6366556bb#p491217]
-
 DesktopCount   = 2 
 CurrentDesktop = 1
 mapDesktopsFromRegistry()
@@ -32,7 +36,6 @@ OutputDebug, [loading] desktops: %DesktopCount% current: %CurrentDesktop%
 ^!x::switchDesktopByNumber(8)
 ^!c::switchDesktopByNumber(9)
 
-;
 mapDesktopsFromRegistry() {
  global CurrentDesktop, DesktopCount
  IdLength := 32
@@ -99,3 +102,6 @@ switchDesktopByNumber(targetDesktop) {
    OutputDebug, [left] target: %targetDesktop% current: %CurrentDesktop%
  }
 }
+
+; other useful scripts (not needed for now)
+; audio source (v2) [https://www.reddit.com/r/autohotkey/comments/156pt7i/comment/jt11b8k/]
