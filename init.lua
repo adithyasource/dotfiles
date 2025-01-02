@@ -13,6 +13,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.cmdheight = 0
+vim.opt.termguicolors = false
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.path:append("**")
 vim.opt.wildignore:append("**/node_modules/*,**/target/*,**/dist/*,**/builds/*")
