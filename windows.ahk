@@ -3,12 +3,12 @@
 ; disable caps lock
 ; cause caps lock is also the fn key on my keyboard
 ; [stolen from www.autohotkey.com/board/topic/51215-completely-disable-capslock/?p=320194]
-SetCapsLockState, alwaysoff
+SetCapsLockState, AlwaysOff
 
 ; always on top
-^+SPACE::
-	WinGetTitle, activeWindow, A
-	Winset, Alwaysontop, , A
+^+Space::
+  WinGetTitle, ActiveWindow, A
+  WinSet, AlwaysOnTop, , A
 Return
 
 ; media keys
@@ -23,85 +23,83 @@ RCtrl::Send, {Volume_Down}
 ; [stolen from https://www.autohotkey.com/boards/viewtopic.php?p=491217&sid=d9047a5a1ef1fb914774e0d6366556bb#p491217]
 DesktopCount   = 2 
 CurrentDesktop = 1
-mapDesktopsFromRegistry()
+MapDesktopsFromRegistry()
 OutputDebug, [loading] desktops: %DesktopCount% current: %CurrentDesktop%
 
-^!q::switchDesktopByNumber(1) 
-^!w::switchDesktopByNumber(2) 
-^!e::switchDesktopByNumber(3)
-^!a::switchDesktopByNumber(4)
-^!s::switchDesktopByNumber(5)
-^!d::switchDesktopByNumber(6)
-^!z::switchDesktopByNumber(7)
-^!x::switchDesktopByNumber(8)
-^!c::switchDesktopByNumber(9)
+^!Q::SwitchDesktopByNumber(1) 
+^!W::SwitchDesktopByNumber(2) 
+^!E::SwitchDesktopByNumber(3)
+^!A::SwitchDesktopByNumber(4)
+^!S::SwitchDesktopByNumber(5)
+^!D::SwitchDesktopByNumber(6)
+^!Z::SwitchDesktopByNumber(7)
+^!X::SwitchDesktopByNumber(8)
+^!C::SwitchDesktopByNumber(9)
 
-mapDesktopsFromRegistry() {
- global CurrentDesktop, DesktopCount
- IdLength := 32
- SessionId := getSessionId()
- if (SessionId) {
-   RegRead, CurrentDesktopId, HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\SessionInfo\%SessionId%\VirtualDesktops, CurrentVirtualDesktop
-   if (CurrentDesktopId) {
-     IdLength := StrLen(CurrentDesktopId)
-   }
- }
- RegRead, DesktopList, HKEY_CURRENT_USER, SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops, VirtualDesktopIDs
- if (DesktopList) {
-   DesktopListLength := StrLen(DesktopList)
-   DesktopCount := DesktopListLength / IdLength
- }
- else {
-   DesktopCount := 1
- }
- i := 0
- while (CurrentDesktopId and i < DesktopCount) {
-   StartPos := (i * IdLength) + 1
-   DesktopIter := SubStr(DesktopList, StartPos, IdLength)
-   OutputDebug, The iterator is pointing at %DesktopIter% and count is %i%.
-   if (DesktopIter = CurrentDesktopId) {
-     CurrentDesktop := i + 1
-     OutputDebug, Current desktop number is %CurrentDesktop% with an ID of %DesktopIter%.
-     break
-     }
-     i++
-   }
-}
-;
-getSessionId() {
- ProcessId := DllCall("GetCurrentProcessId", "UInt")
- if ErrorLevel {
-   OutputDebug, Error getting current process id: %ErrorLevel%
-   return
- }
- OutputDebug, Current Process Id: %ProcessId%
- DllCall("ProcessIdToSessionId", "UInt", ProcessId, "UInt*", SessionId)
- if ErrorLevel {
-   OutputDebug, Error getting session id: %ErrorLevel%
-   return
- }
- OutputDebug, Current Session Id: %SessionId%
- return SessionId
-}
-;
-switchDesktopByNumber(targetDesktop) {
- global CurrentDesktop, DesktopCount
- mapDesktopsFromRegistry()
- if (targetDesktop > DesktopCount || targetDesktop < 1) {
-   OutputDebug, [invalid] target: %targetDesktop% current: %CurrentDesktop%
-   return
- }
- while(CurrentDesktop < targetDesktop) {
-   Send ^#{Right}
-   CurrentDesktop++
-   OutputDebug, [right] target: %targetDesktop% current: %CurrentDesktop%
- }
- while(CurrentDesktop > targetDesktop) {
-   Send ^#{Left}
-   CurrentDesktop--
-   OutputDebug, [left] target: %targetDesktop% current: %CurrentDesktop%
- }
+MapDesktopsFromRegistry() {
+  Global CurrentDesktop, DesktopCount
+  IDLength := 32
+  SessionID := GetSessionID()
+  If (SessionID) {
+    RegRead, CurrentDesktopID, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\SessionInfo\%SessionID%\VirtualDesktops, CurrentVirtualDesktop
+    If (CurrentDesktopID) {
+      IDLength := StrLen(CurrentDesktopID)
+    }
+  }
+  RegRead, DesktopList, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops, VirtualDesktopIDs
+  If (DesktopList) {
+    DesktopListLength := StrLen(DesktopList)
+    DesktopCount := DesktopListLength / IDLength
+  } Else {
+    DesktopCount := 1
+  }
+  I := 0
+  While (CurrentDesktopID and I < DesktopCount) {
+    StartPos := (I * IDLength) + 1
+    DesktopIter := SubStr(DesktopList, StartPos, IDLength)
+    OutputDebug, The iterator is pointing at %DesktopIter% and count is %I%.
+    If (DesktopIter = CurrentDesktopID) {
+      CurrentDesktop := I + 1
+      OutputDebug, Current desktop number is %CurrentDesktop% with an ID of %DesktopIter%.
+      Break
+    }
+    I++
+  }
 }
 
-; other useful scripts (not needed for now)
-; audio source (v2) [https://www.reddit.com/r/autohotkey/comments/156pt7i/comment/jt11b8k/]
+GetSessionID() {
+  ProcessID := DllCall("GetCurrentProcessId", "UInt")
+  If ErrorLevel {
+    OutputDebug, Error getting current process ID: %ErrorLevel%
+    Return
+  }
+  OutputDebug, Current process ID: %ProcessID%
+  DllCall("ProcessIdToSessionId", "UInt", ProcessID, "UInt*", SessionID)
+  If ErrorLevel {
+    OutputDebug, Error getting session ID: %ErrorLevel%
+    Return
+  }
+  OutputDebug, Current session ID: %SessionID%
+  Return SessionID
+}
+
+SwitchDesktopByNumber(TargetDesktop) {
+  Global CurrentDesktop, DesktopCount
+  MapDesktopsFromRegistry()
+  If (TargetDesktop > DesktopCount || TargetDesktop < 1) {
+    OutputDebug, [invalid] target: %TargetDesktop% current: %CurrentDesktop%
+    Return
+  }
+  While (CurrentDesktop < TargetDesktop) {
+    Send ^#{Right}
+    CurrentDesktop++
+    OutputDebug, [right] target: %TargetDesktop% current: %CurrentDesktop%
+  }
+  While (CurrentDesktop > TargetDesktop) {
+    Send ^#{Left}
+    CurrentDesktop--
+    OutputDebug, [left] target: %TargetDesktop% current: %CurrentDesktop%
+  }
+}
+
+; maybe useful audio source (v2) [https://www.reddit.com/r/autohotkey/comments/156pt7i/comment/jt11b8k/]
