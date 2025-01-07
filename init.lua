@@ -39,8 +39,8 @@ vim.keymap.set("v", "D", "<del>")
 vim.keymap.set("i", "<c-n>", "<C-x><C-o>")
 vim.keymap.set("i", "<c-b>", "<C-x><C-n>")
 vim.keymap.set("x", "p", [["_dP]])
-vim.keymap.set({ "n", "v" }, "<C-j>", "5j")
-vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
+vim.keymap.set({ "n", "v" }, "<c-j>", "5j")
+vim.keymap.set({ "n", "v" }, "<c-k>", "5k")
 vim.keymap.set({ "n", "v" }, "d", [["_d]])
 
 -- (macos) git clone --depth=1 https://github.com/neovim/nvim-lspconfig ~/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig
