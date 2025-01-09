@@ -1,7 +1,13 @@
 source ~/.zshrcsensitive
-alias ls="ls -a"
 set -o vi
-path+=('/Users/adithya/go/bin')
-alias gsource="ssh-add -D && ssh-add ~/.ssh/id_rsa && ssh -T git@github.com && git config user.name 'adithyasource' && git config user.email 'adithyasrc@gmail.com'"
-alias gnst="ssh-add -D && ssh-add ~/.ssh/github-adithyanst && ssh -T git@github.com && git config --global user.name adithyanst && git config --global user.email pampana.adithya2024@nst.rishihood.edu.in"
-# bash <(curl -sSL https://raw.githubusercontent.com/SpotX-Official/SpotX-Bash/main/spotx.sh) -f
+alias ls="ls -a"
+alias gsrc="switch_account ~/.ssh/adithyasrc 'adithyasource' 'adithyasrc@gmail.com'"
+alias gnst="switch_account ~/.ssh/adithyanst 'adithyanst' 'pampana.adithya2024@nst.rishihood.edu.in'"
+
+switch_account() {
+  ssh-add -D
+  ssh-add "$1"
+  git config user.name "$2"
+  git config user.email "$3"
+  ssh -T git@github.com
+}
