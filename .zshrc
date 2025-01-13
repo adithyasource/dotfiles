@@ -1,6 +1,7 @@
 source ~/.zshrcsensitive
 set -o vi
 alias ls="ls -a"
+alias s="sudo pmset disablesleep"
 alias gsrc="switch_account ~/.ssh/adithyasrc 'adithyasource' 'adithyasrc@gmail.com'"
 alias gnst="switch_account ~/.ssh/adithyanst 'adithyanst' 'pampana.adithya2024@nst.rishihood.edu.in'"
 
