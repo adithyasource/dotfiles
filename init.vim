@@ -7,6 +7,7 @@ set undofile
 set nohlsearch
 set incsearch
 set scrolloff=10
+set notermguicolors
 set ignorecase
 set smartcase
 set nowrap
