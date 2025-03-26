@@ -23,6 +23,7 @@ nnoremap <C-e> :edit .<CR>
 nnoremap <C-p> :find 
 nnoremap <C-a> :lua vim.diagnostic.setloclist()<CR>
 nnoremap <C-s> :lua vim.lsp.buf.format({filter = function(client) return client.name ~= 'ts_ls' end}); vim.cmd('w')<CR>:redraw!<CR>
+tnoremap <C-\> <C-\><C-n>
 nnoremap <M-e> :!open .<CR>
 nnoremap <M-w> :!explorer .<CR>
 nnoremap <M-h> :vertical resize -5<CR>
@@ -45,7 +46,6 @@ nnoremap d "_d
 vnoremap d "_d
 
 " :lua vim.fn.system({"git", "clone", "--depth=1", "https://github.com/neovim/nvim-lspconfig", vim.fn.stdpath("data") .. "/site/pack/plugins/start/nvim-lspconfig"})
-" :helptags ALL | help lspconfig-all
 lua << EOF
 local lsp = require("lspconfig")
 lsp.html.setup({})
