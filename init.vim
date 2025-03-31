@@ -1,5 +1,5 @@
 let g:netrw_liststyle = 3
-set guicursor=n-v-i-c:block-Cursor
+set guicursor=i:block
 set shiftwidth=2
 set expandtab
 set nobackup
@@ -8,15 +8,11 @@ set nohlsearch
 set incsearch
 set scrolloff=10
 set notermguicolors
-set ignorecase
-set smartcase
 set nowrap
 set cmdheight=0
 set clipboard+=unnamedplus
 set path+=**
 set wildignore+=**/node_modules/*,**/target/*,**/dist/*,**/builds/*
-set completeopt=menu
-highlight StatusLine ctermfg=0 ctermbg=6
 lua vim.loader.enable()
 
 nnoremap <C-e> :edit .<CR>
@@ -46,16 +42,14 @@ nnoremap d "_d
 vnoremap d "_d
 
 " :lua vim.fn.system({"git", "clone", "--depth=1", "https://github.com/neovim/nvim-lspconfig", vim.fn.stdpath("data") .. "/site/pack/plugins/start/nvim-lspconfig"})
-lua << EOF
-local lsp = require("lspconfig")
-lsp.html.setup({})
-lsp.biome.setup({})
-lsp.ts_ls.setup({})
-lsp.svelte.setup({})
-lsp.tailwindcss.setup({})
-lsp.ruff.setup({})
-lsp.clangd.setup({})
-lsp.gopls.setup({})
-lsp.rust_analyzer.setup({})
-lsp.lua_ls.setup({})
-EOF
+lua lsp = require("lspconfig")
+lua lsp.html.setup({})
+lua lsp.biome.setup({})
+lua lsp.ts_ls.setup({})
+lua lsp.svelte.setup({})
+lua lsp.tailwindcss.setup({})
+lua lsp.ruff.setup({})
+lua lsp.clangd.setup({})
+lua lsp.gopls.setup({})
+lua lsp.rust_analyzer.setup({})
+lua lsp.lua_ls.setup({})

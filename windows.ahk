@@ -1,17 +1,10 @@
-; INFO this script file only works with ahk v1
-
-; disable caps lock
-; cause caps lock is also the fn key on my keyboard
-; [stolen from www.autohotkey.com/board/topic/51215-completely-disable-capslock/?p=320194]
 SetCapsLockState, AlwaysOff
 
-; always on top
 ^+Space::
   WinGetTitle, ActiveWindow, A
   WinSet, AlwaysOnTop, , A
 Return
 
-; media keys
 RAlt & Space::Send, {Media_Play_Pause}
 ^!Left::Send, {Media_Prev}
 ^!Right::Send, {Media_Next}
@@ -19,8 +12,6 @@ RAlt & Space::Send, {Media_Play_Pause}
 RShift::Send, {Volume_Up}
 RCtrl::Send, {Volume_Down}
 
-; switching desktops
-; [stolen from https://www.autohotkey.com/boards/viewtopic.php?p=491217&sid=d9047a5a1ef1fb914774e0d6366556bb#p491217]
 DesktopCount   = 2 
 CurrentDesktop = 1
 MapDesktopsFromRegistry()
@@ -101,5 +92,3 @@ SwitchDesktopByNumber(TargetDesktop) {
     OutputDebug, [left] target: %TargetDesktop% current: %CurrentDesktop%
   }
 }
-
-; maybe useful audio source (v2) [https://www.reddit.com/r/autohotkey/comments/156pt7i/comment/jt11b8k/]

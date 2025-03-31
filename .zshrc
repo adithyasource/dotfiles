@@ -1,14 +1,4 @@
-source ~/.zshrcsensitive
 set -o vi
 alias ls="ls -a"
-alias s="sudo pmset disablesleep"
-alias gsrc="switch_account ~/.ssh/adithyasrc 'adithyasource' 'adithyasrc@gmail.com'"
-alias gnst="switch_account ~/.ssh/adithyanst 'adithyanst' 'pampana.adithya2024@nst.rishihood.edu.in'"
-
-switch_account() {
-  ssh-add -D
-  ssh-add "$1"
-  git config user.name "$2"
-  git config user.email "$3"
-  ssh -T git@github.com
-}
+alias gsrc='ssh-add -D && ssh-add ~/.ssh/adithyasrc && git config --global user.name "adithyasource" && git config --global user.email "adithyasrc@gmail.com" && ssh -T git@github.com'
+alias gnst='ssh-add -D && ssh-add ~/.ssh/adithyanst && git config --global user.name "adithyanst" && git config --global user.email "pampana.adithya2024@nst.rishihood.edu.in" && ssh -T git@github.com'
