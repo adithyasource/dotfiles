@@ -41,16 +41,14 @@ vnoremap <C-k> 5k
 nnoremap d "_d
 vnoremap d "_d
 
-" :lua vim.fn.system({"git", "clone", "--depth=1", "https://github.com/neovim/nvim-lspconfig", vim.fn.stdpath("data") .. "/site/pack/plugins/start/nvim-lspconfig"})
-lua lsp = require("lspconfig")
-lua lsp.html.setup({})
-lua lsp.biome.setup({})
-lua lsp.ts_ls.setup({})
-lua lsp.svelte.setup({})
-lua lsp.tailwindcss.setup({})
-lua lsp.ruff.setup({})
-lua lsp.clangd.setup({})
-lua lsp.gopls.setup({})
-lua lsp.rust_analyzer.setup({})
-lua lsp.lua_ls.setup({})
+lua vim.lsp.config.html = { cmd = { 'vscode-html-language-server', '--stdio' }, filetypes = { 'html', 'templ' }, }
+lua vim.lsp.config.biome = { cmd = { 'biome', 'lsp-proxy' }, filetypes = { 'astro', 'css', 'graphql', 'javascript', 'javascriptreact', 'json', 'jsonc', 'svelte', 'typescript', 'typescriptreact', 'vue', }, }
+lua vim.lsp.config.ts_ls = { cmd = { 'typescript-language-server', '--stdio' }, filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', }, }
+lua vim.lsp.config.svelte = { cmd = { 'svelteserver', '--stdio' }, filetypes = { 'svelte' }, }
+lua vim.lsp.config.tailwindcss = { cmd = { 'tailwindcss-language-server', '--stdio' }, filetypes = { 'astro', 'css', 'html', 'javascript', 'javascriptreact', 'markdown', 'scss', 'svelte', 'typescript', 'typescriptreact', 'vue', 'templ', }, }
+lua vim.lsp.config.ruff = { cmd = { 'ruff', 'server' }, filetypes = { 'python' }, }
+lua vim.lsp.config.clangd = { cmd = { 'clangd' }, filetypes = { 'c', 'cpp' }, }
+lua vim.lsp.config.gopls = { cmd = { 'gopls' }, filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' }, }
+lua vim.lsp.config.rust_analyzer = { cmd = { 'rust-analyzer' }, filetypes = { 'rust' }, }
+lua vim.lsp.enable({ 'html', 'biome', 'ts_ls', 'svelte', 'tailwindcss', 'ruff', 'clangd', 'gopls', 'rust_analyzer', })
 lua vim.diagnostic.config({ virtual_lines = true })
