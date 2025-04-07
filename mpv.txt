@@ -1,0 +1,12 @@
+-> mpv.conf <-
+loop-file=inf
+--no-border
+script-opts=osc-visibility=never
+geometry=40%
+autofit=100%
+
+-> input.conf <-
+MBTN_MID quit
+WHEEL_UP no-osd add window-scale +0.09
+WHEEL_DOWN no-osd add window-scale -0.09
+ctrl+h script-binding osc/visibility
