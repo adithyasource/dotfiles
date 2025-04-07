@@ -20,8 +20,6 @@ nnoremap <C-p> :find
 nnoremap <C-a> :lua vim.diagnostic.setloclist()<CR>
 nnoremap <C-s> :lua vim.lsp.buf.format({filter = function(client) return client.name ~= 'ts_ls' end}); vim.cmd('w')<CR>:redraw!<CR>
 tnoremap <C-\> <C-\><C-n>
-nnoremap <M-e> :!open .<CR>
-nnoremap <M-w> :!explorer .<CR>
 nnoremap <M-h> :vertical resize -5<CR>
 nnoremap <M-l> :vertical resize +5<CR>
 nnoremap <M-j> :horizontal resize -5<CR>
@@ -41,7 +39,7 @@ vnoremap <C-k> 5k
 nnoremap d "_d
 vnoremap d "_d
 
-lua vim.lsp.config.html = { cmd = { 'vscode-html-language-server', '--stdio' }, filetypes = { 'html', 'templ' }, }
+lua vim.lsp.config.html = { cmd = { 'vscode-html-language-server', '--stdio' }, filetypes = { 'html', 'templ' }, init_options = { embeddedLanguages = { css = true, javascript = true, }, configurationSection = { 'html', 'css', 'javascript' }, provideFormatter = true, }, }
 lua vim.lsp.config.biome = { cmd = { 'biome', 'lsp-proxy' }, filetypes = { 'astro', 'css', 'graphql', 'javascript', 'javascriptreact', 'json', 'jsonc', 'svelte', 'typescript', 'typescriptreact', 'vue', }, }
 lua vim.lsp.config.ts_ls = { cmd = { 'typescript-language-server', '--stdio' }, filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', }, }
 lua vim.lsp.config.svelte = { cmd = { 'svelteserver', '--stdio' }, filetypes = { 'svelte' }, }
