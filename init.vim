@@ -41,9 +41,9 @@ vnoremap d "_d
 
 lua vim.lsp.config.html = { cmd = { 'vscode-html-language-server', '--stdio' }, filetypes = { 'html', 'templ' }, init_options = { embeddedLanguages = { css = true, javascript = true, }, configurationSection = { 'html', 'css', 'javascript' }, provideFormatter = true, }, }
 lua vim.lsp.config.biome = { cmd = { 'biome', 'lsp-proxy' }, filetypes = { 'astro', 'css', 'graphql', 'javascript', 'javascriptreact', 'json', 'jsonc', 'svelte', 'typescript', 'typescriptreact', 'vue', }, }
-lua vim.lsp.config.ts_ls = { cmd = { 'typescript-language-server', '--stdio' }, filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', }, }
+lua vim.lsp.config.ts_ls = { cmd = { 'typescript-language-server', '--stdio' }, init_options = { hostInfo = 'neovim' }, filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', }, root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git', }, single_file_support = true, }
 lua vim.lsp.config.svelte = { cmd = { 'svelteserver', '--stdio' }, filetypes = { 'svelte' }, }
-lua vim.lsp.config.tailwindcss = { cmd = { 'tailwindcss-language-server', '--stdio' }, filetypes = { 'astro', 'css', 'html', 'javascript', 'javascriptreact', 'markdown', 'scss', 'svelte', 'typescript', 'typescriptreact', 'vue', 'templ', }, }
+lua vim.lsp.config.tailwindcss = { cmd = { 'tailwindcss-language-server', '--stdio' }, filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'svelte' }, root_markers = { 'tailwind.config.js', 'tailwind.config.cjs', 'tailwind.config.mjs', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.cjs', 'postcss.config.mjs', 'postcss.config.ts', 'package.json', } , }
 lua vim.lsp.config.ruff = { cmd = { 'ruff', 'server' }, filetypes = { 'python' }, }
 lua vim.lsp.config.clangd = { cmd = { 'clangd' }, filetypes = { 'c', 'cpp' }, }
 lua vim.lsp.config.gopls = { cmd = { 'gopls' }, filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' }, }
