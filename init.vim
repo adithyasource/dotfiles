@@ -3,11 +3,15 @@ set guicursor=i:block
 set shiftwidth=2
 set expandtab
 set nobackup
+set nowritebackup
+set noswapfile
 set undofile
 set nohlsearch
 set incsearch
 set scrolloff=10
 set notermguicolors
+set ignorecase
+set smartcase
 set nowrap
 set cmdheight=0
 set clipboard+=unnamedplus
@@ -51,3 +55,4 @@ lua lsp.clangd.setup({})
 lua lsp.gopls.setup({})
 lua lsp.rust_analyzer.setup({})
 lua vim.diagnostic.config({ virtual_lines = true })
+
