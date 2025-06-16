@@ -188,6 +188,8 @@
 	<false/>
 	<key>CommandString</key>
 	<string></string>
+	<key>CursorBlink</key>
+	<true/>
 	<key>CursorColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
@@ -197,17 +199,21 @@
 	cqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+qKqssbzFzdAAAAAAAAABAQAAAAAA
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
+	<key>CursorType</key>
+	<integer>0</integer>
 	<key>EnableSmoothResizing</key>
 	<true/>
 	<key>Font</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
-	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAMgAAAAAAABAQgAKAA1tTaW1T
-	dW4tRXh0QtIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250ohkbWE5TT2JqZWN0
-	CBEaJCkyN0lMUVNYXmdud36FjpCSlKClsLnAwwAAAAAAAAEBAAAAAAAAABwAAAAAAAAA
-	AAAAAAAAAADM
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNALAAAAAAAABAQgAKAA18QEkNv
+	bW1pdE1vbm8tUmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250ohkb
+	WE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKmuucLJzAAAAAAAAAEBAAAAAAAA
+	ABwAAAAAAAAAAAAAAAAAAADV
 	</data>
+	<key>FontHeightSpacing</key>
+	<real>0.94999999999999996</real>
 	<key>ProfileCurrentVersion</key>
 	<real>2.0699999999999998</real>
 	<key>RunCommandAsShell</key>
@@ -274,10 +280,9 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxARElVO
-	U1JHQlxOU0NvbG9yU3BhY2VWJGNsYXNzTxAnMC42Mjc0NTEwMDI2IDAuNjI3NDUxMDAy
-	NiAwLjYyNzQ1MTAwMjYAEAKAAtIUFRYXWiRjbGFzc25hbWVYJGNsYXNzZXNXTlNDb2xv
-	cqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+qKqssbzFzdAAAAAAAAABAQAAAAAA
-	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
+	U1JHQlxOU0NvbG9yU3BhY2VWJGNsYXNzTxAPMC42MyAwLjYzIDAuNjMAEAKAAtIUFRYX
+	WiRjbGFzc25hbWVYJGNsYXNzZXNXTlNDb2xvcqIWGFhOU09iamVjdAgRGiQpMjdJTFFT
+	V11kand+kJKUmaSttbgAAAAAAAABAQAAAAAAAAAZAAAAAAAAAAAAAAAAAAAAwQ==
 	</data>
 	<key>UseBoldFonts</key>
 	<false/>
@@ -286,7 +291,7 @@
 	<key>columnCount</key>
 	<integer>90</integer>
 	<key>name</key>
-	<string>simple</string>
+	<string>macos</string>
 	<key>rowCount</key>
 	<integer>30</integer>
 	<key>shellExitAction</key>
