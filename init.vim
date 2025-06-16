@@ -55,4 +55,3 @@ lua lsp.clangd.setup({})
 lua lsp.gopls.setup({})
 lua lsp.rust_analyzer.setup({})
 lua vim.diagnostic.config({ virtual_lines = true })
-

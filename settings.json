@@ -21,22 +21,13 @@
             "command": "find",
             "id": "User.find",
             "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
         }
     ],
     "alwaysShowTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "disableAnimations": true,
     "newTabMenu": 
     [
         {
@@ -47,16 +38,16 @@
     {
         "defaults": 
         {
+            "antialiasingMode": "grayscale",
             "colorScheme": "N0tch2k",
             "cursorShape": "filledBox",
-            "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "SimSun-ExtB",
-                "size": 11
+                "face": "CommitMono",
+                "size": 10
             },
             "padding": "0",
-            "scrollbarState": "hidden"
+            "useAcrylic": false
         },
         "list": 
         [
@@ -64,16 +55,25 @@
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
-                "name": "Windows PowerShell"
+                "name": "ps"
             },
             {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
-                "name": "Command Prompt"
+                "name": "cmd"
+            },
+            {
+                "commandline": "C:\\Windows\\system32\\wsl.exe -d Ubuntu-24.04",
+                "guid": "{3ad097ba-eb92-4c8e-9f0a-71895dc85cc0}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+                "name": "ubuntu",
+                "startingDirectory": "~"
             }
         ]
     },
+    "rendering.graphicsAPI": "direct3d11",
     "schemes": 
     [
         {
@@ -102,5 +102,7 @@
     ],
     "showTabsInTitlebar": false,
     "showTerminalTitleInTitlebar": false,
-    "themes": []
+    "theme": "dark",
+    "themes": [],
+    "useAcrylicInTabRow": false
 }
