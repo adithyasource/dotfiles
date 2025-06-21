@@ -41,7 +41,8 @@ vim.keymap.set("i", "<C-n>", "<C-x><C-o>")
 vim.keymap.set("i", "<C-b>", "<C-x><C-n>")
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 vim.keymap.set({ "n", "v" }, "d", '"_d')
-
--- :lua vim.fn.system({"git", "clone", "--depth=1", "https://github.com/neovim/nvim-lspconfig", vim.fn.stdpath("data") .. "/site/pack/plugins/start/nvim-lspconfig"})
-for _, server in ipairs({ "html", "biome", "ts_ls", "svelte", "tailwindcss", "ruff", "clangd", "gopls", "rust_analyzer" }) do require("lspconfig")[server].setup({}) end
+  
+-- vim.fn.system({"git", "clone", "--depth=1", "https://github.com/neovim/nvim-lspconfig", vim.fn.stdpath("data") .. "/site/pack/plugins/start/nvim-lspconfig"})
 vim.diagnostic.config({ virtual_lines = true })
+vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
+vim.lsp.enable({ "html", "biome", "ts_ls", "svelte", "tailwindcss", "ruff", "clangd", "gopls", "rust_analyzer", "glsl_analyzer" })
