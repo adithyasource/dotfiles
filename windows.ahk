@@ -12,6 +12,26 @@ RAlt & Space::Send, {Media_Play_Pause}
 RShift::Send, {Volume_Up}
 RCtrl::Send, {Volume_Down}
 
+isDragging := false
+
+#IfWinActive ahk_exe Adobe Premiere Pro.exe
+MButton::
+  if (!isDragging) {
+    isDragging := true
+    Send, h
+    Sleep, 50
+    Click, Down, Left
+    while (GetKeyState("MButton", "P")) {
+      Sleep, 10
+    }
+    Click, Up, Left
+    Sleep, 50
+    Send, v
+    isDragging := false
+  }
+Return
+#IfWinActive
+
 DesktopCount   = 2 
 CurrentDesktop = 1
 MapDesktopsFromRegistry()
@@ -92,3 +112,4 @@ SwitchDesktopByNumber(TargetDesktop) {
     OutputDebug, [left] target: %TargetDesktop% current: %CurrentDesktop%
   }
 }
+
