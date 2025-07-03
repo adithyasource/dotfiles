@@ -1,10 +1,15 @@
+; turns off caps lock
+; cause my keyboard also uses it as a fn key
+; and holding it makes wasd act like arrow keys
 SetCapsLockState, AlwaysOff
 
+; ctrl+shift+space for activating always on top
 ^+Space::
   WinGetTitle, ActiveWindow, A
   WinSet, AlwaysOnTop, , A
 Return
 
+; media controls
 RAlt & Space::Send, {Media_Play_Pause}
 ^!Left::Send, {Media_Prev}
 ^!Right::Send, {Media_Next}
@@ -12,104 +17,49 @@ RAlt & Space::Send, {Media_Play_Pause}
 RShift::Send, {Volume_Up}
 RCtrl::Send, {Volume_Down}
 
-isDragging := false
+; dont even question the sanity of the rest of the script
 
-#IfWinActive ahk_exe Adobe Premiere Pro.exe
-MButton::
-  if (!isDragging) {
-    isDragging := true
-    Send, h
-    Sleep, 50
-    Click, Down, Left
-    while (GetKeyState("MButton", "P")) {
-      Sleep, 10
+; holding middle click then pressing and holding right click and then leaving middle click
+; holds down ctrl+alt as long as right click is held so that i can use altsnap
+; where left drag moves the window and middle click drag resizes it
+ctrlAltActive := false
+~MButton::Return
+RButton::
+  if (GetKeyState("MButton", "P")) {
+    if (!ctrlAltActive) {
+      ctrlAltActive := true
+      Send, {Ctrl Down}{Alt Down}
     }
-    Click, Up, Left
-    Sleep, 50
-    Send, v
-    isDragging := false
+    KeyWait, RButton
+    if (ctrlAltActive) {
+      Send, {Ctrl Up}{Alt Up}
+      ctrlAltActive := false
+    }
+    Return
   }
+  Send, {RButton down}
+  KeyWait, RButton
+  Send, {RButton up}
 Return
-#IfWinActive
 
-DesktopCount   = 2 
-CurrentDesktop = 1
-MapDesktopsFromRegistry()
-OutputDebug, [loading] desktops: %DesktopCount% current: %CurrentDesktop%
-
-^!Q::SwitchDesktopByNumber(1) 
-^!W::SwitchDesktopByNumber(2) 
-^!E::SwitchDesktopByNumber(3)
-^!A::SwitchDesktopByNumber(4)
-^!S::SwitchDesktopByNumber(5)
-^!D::SwitchDesktopByNumber(6)
-^!Z::SwitchDesktopByNumber(7)
-^!X::SwitchDesktopByNumber(8)
-^!C::SwitchDesktopByNumber(9)
-
-MapDesktopsFromRegistry() {
-  Global CurrentDesktop, DesktopCount
-  IDLength := 32
-  SessionID := GetSessionID()
-  If (SessionID) {
-    RegRead, CurrentDesktopID, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\SessionInfo\%SessionID%\VirtualDesktops, CurrentVirtualDesktop
-    If (CurrentDesktopID) {
-      IDLength := StrLen(CurrentDesktopID)
-    }
-  }
-  RegRead, DesktopList, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops, VirtualDesktopIDs
-  If (DesktopList) {
-    DesktopListLength := StrLen(DesktopList)
-    DesktopCount := DesktopListLength / IDLength
-  } Else {
-    DesktopCount := 1
-  }
-  I := 0
-  While (CurrentDesktopID and I < DesktopCount) {
-    StartPos := (I * IDLength) + 1
-    DesktopIter := SubStr(DesktopList, StartPos, IDLength)
-    OutputDebug, The iterator is pointing at %DesktopIter% and count is %I%.
-    If (DesktopIter = CurrentDesktopID) {
-      CurrentDesktop := I + 1
-      OutputDebug, Current desktop number is %CurrentDesktop% with an ID of %DesktopIter%.
-      Break
-    }
-    I++
-  }
-}
-
-GetSessionID() {
-  ProcessID := DllCall("GetCurrentProcessId", "UInt")
-  If ErrorLevel {
-    OutputDebug, Error getting current process ID: %ErrorLevel%
-    Return
-  }
-  OutputDebug, Current process ID: %ProcessID%
-  DllCall("ProcessIdToSessionId", "UInt", ProcessID, "UInt*", SessionID)
-  If ErrorLevel {
-    OutputDebug, Error getting session ID: %ErrorLevel%
-    Return
-  }
-  OutputDebug, Current session ID: %SessionID%
-  Return SessionID
-}
-
-SwitchDesktopByNumber(TargetDesktop) {
-  Global CurrentDesktop, DesktopCount
-  MapDesktopsFromRegistry()
-  If (TargetDesktop > DesktopCount || TargetDesktop < 1) {
-    OutputDebug, [invalid] target: %TargetDesktop% current: %CurrentDesktop%
-    Return
-  }
-  While (CurrentDesktop < TargetDesktop) {
-    Send ^#{Right}
-    CurrentDesktop++
-    OutputDebug, [right] target: %TargetDesktop% current: %CurrentDesktop%
-  }
-  While (CurrentDesktop > TargetDesktop) {
+; "we have a window manager at home" ahh code
+^!Q::JumpToDesktop(1)
+^!W::JumpToDesktop(2)
+^!E::JumpToDesktop(3)
+^!A::JumpToDesktop(4)
+^!S::JumpToDesktop(5)
+^!D::JumpToDesktop(6)
+^!Z::JumpToDesktop(7)
+^!X::JumpToDesktop(8)
+^!C::JumpToDesktop(9)
+JumpToDesktop(target) {
+  ; reset to desktop 1
+  Loop, 9 {
     Send ^#{Left}
-    CurrentDesktop--
-    OutputDebug, [left] target: %TargetDesktop% current: %CurrentDesktop%
+    Sleep, 50
+  }
+  Loop, % target - 1 {
+    Send ^#{Right}
+    Sleep, 50
   }
 }
-
