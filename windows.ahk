@@ -17,32 +17,6 @@ RAlt & Space::Send, {Media_Play_Pause}
 RShift::Send, {Volume_Up}
 RCtrl::Send, {Volume_Down}
 
-; dont even question the sanity of the rest of the script
-; holding middle click then pressing and holding right click and then leaving middle click
-; holds down ctrl+alt as long as right click is held so that i can use altsnap
-; where left drag moves the window and middle click drag resizes it
-ctrlAltActive := false
-
-~MButton::Return
-
-RButton::
-    if (GetKeyState("MButton", "P")) {
-        if (!ctrlAltActive) {
-            ctrlAltActive := true
-            Send, {Ctrl Down}{Alt Down}
-        }
-        KeyWait, RButton
-        if (ctrlAltActive) {
-            Send, {Ctrl Up}{Alt Up}
-            ctrlAltActive := false
-        }
-        Return
-    }
-    Send, {RButton down}
-    KeyWait, RButton
-    Send, {RButton up}
-Return
-
 ; "we have a window manager at home" ahh code
 CurrentDesktop := 1
 DesktopFile := A_ScriptDir . "\current_desktop.txt"
