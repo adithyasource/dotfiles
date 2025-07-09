@@ -3,6 +3,9 @@
 ; and holding it makes wasd act like arrow keys
 SetCapsLockState, AlwaysOff
 
+; back button to middle click (front mouse button is control for alt snap)
+XButton1::MButton
+
 ; ctrl+shift+space for activating always on top
 ^+Space::
     WinGetTitle, ActiveWindow, A
