@@ -43,6 +43,5 @@ vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 vim.keymap.set({ "n", "v" }, "d", '"_d')
   
 -- vim.fn.system({"git", "clone", "--depth=1", "https://github.com/neovim/nvim-lspconfig", vim.fn.stdpath("data") .. "/site/pack/plugins/start/nvim-lspconfig"})
-vim.diagnostic.config({ virtual_lines = true })
 vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
-vim.lsp.enable({ "html", "biome", "ts_ls", "svelte", "tailwindcss", "ruff", "clangd", "gopls", "rust_analyzer", "glsl_analyzer" })
+vim.lsp.enable({ "html", "biome", "ts_ls", "svelte", "tailwindcss", "ruff", "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer", "typos_lsp" })
