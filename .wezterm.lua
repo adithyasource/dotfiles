@@ -5,7 +5,8 @@ local config = {
   hide_tab_bar_if_only_one_tab = true,
   initial_cols = 90,
   initial_rows = 30,
-  font = wt.font("SimSun-ExtB"),
+  font = wt.font("MS Gothic"),
+  cell_width = 0.8,
   colors = {
     foreground = "#A0A0A0",
     background = "#232323",
@@ -14,9 +15,9 @@ local config = {
     cursor_border = "#FFFFFF",
     selection_bg = "#CACACA",
     selection_fg = "#232323",
-    ansi = { "#383838", "#A95551", "#666666", "#A98051", "#657D3E", "#767676", "#C9C9C9", "#BABABA", },
-    brights = { "#474747", "#A97775", "#8C8C8C", "#A99175", "#98BD5E", "#A3A3A3", "#DCDCDC", "#CACACA", },
-  },
+    ansi = { "#383838", "#9b6e6b", "#777777", "#9b806b", "#778060", "#767676", "#b8b8b8", "#b0b0b0", },
+    brights = { "#474747", "#9b7f7d", "#8c8c8c", "#9b8c7d", "#a0b77d", "#a3a3a3", "#cfcfcf", "#c0c0c0", },
+  }
 }
 
 if wt.target_triple:find("apple") then
@@ -26,4 +27,7 @@ elseif wt.target_triple:find("windows") then
   config.default_prog = { "powershell.exe", "-NoLogo" }
 end
 
+wt.on('format-window-title', function () return 'terminal' end)
+
 return config
+
