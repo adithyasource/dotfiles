@@ -5,8 +5,7 @@ local config = {
   hide_tab_bar_if_only_one_tab = true,
   initial_cols = 90,
   initial_rows = 30,
-  font = wt.font("MS Gothic"),
-  cell_width = 0.8,
+  font = wt.font("SimSun-ExtB"),
   colors = {
     foreground = "#A0A0A0",
     background = "#232323",
@@ -30,4 +29,6 @@ end
 wt.on('format-window-title', function () return 'terminal' end)
 
 return config
+
+
 
