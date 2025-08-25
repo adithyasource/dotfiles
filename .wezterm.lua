@@ -29,6 +29,3 @@ end
 wt.on('format-window-title', function () return 'terminal' end)
 
 return config
-
-
-
