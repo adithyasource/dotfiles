@@ -40,8 +40,7 @@ vim.keymap.set({ "n", "v" }, "d", '"_d')
   
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
 vim.lsp.enable({
-  "html", "biome", "ts_ls", "svelte", "tailwindcss",
-  "ruff", "ty", "clangd", "gopls", "rust_analyzer",
-  "glsl_analyzer", "typos_lsp",
+  "html", "biome", "ts_ls", "svelte", "tailwindcss", "ruff",
+  "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
 })
 vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })

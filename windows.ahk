@@ -1,18 +1,5 @@
-; turns off caps lock
-; cause my keyboard also uses it as a fn key
-; and holding it makes wasd act like arrow keys
 SetCapsLockState, AlwaysOff
-
-; back button to middle click (front mouse button is control for alt snap)
 XButton1::MButton
-
-; ctrl+shift+space for activating always on top
-^+Space::
-    WinGetTitle, ActiveWindow, A
-    WinSet, AlwaysOnTop, , A
-Return
-
-; media controls
 RAlt & Space::Send, {Media_Play_Pause}
 ^!Left::Send, {Media_Prev}
 ^!Right::Send, {Media_Next}
@@ -20,7 +7,11 @@ RAlt & Space::Send, {Media_Play_Pause}
 RShift::Send, {Volume_Up}
 RCtrl::Send, {Volume_Down}
 
-; "we have a window manager at home" ahh code
+^+Space::
+    WinGetTitle, ActiveWindow, A
+    WinSet, AlwaysOnTop, , A
+Return
+
 CurrentDesktop := 1
 DesktopFile := A_ScriptDir . "\current_desktop.txt"
 

@@ -7,7 +7,7 @@ return {
   initial_rows = 30,
   colors = {
     foreground = "#A0A0A0",
-    background = "#232323",
+    background = "#303030",
     cursor_bg = "#FFFFFF",
     cursor_fg = "#232323",
     cursor_border = "#FFFFFF",
@@ -20,4 +20,3 @@ return {
   font_size = w.target_triple:find("windows") and 13 or 20,
   default_prog = w.target_triple:find("windows") and { "powershell.exe", "-NoLogo" },
 }
-
