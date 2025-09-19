@@ -1,0 +1,39 @@
+[window]
+title = "terminal"
+option_as_alt = "OnlyLeft"
+
+[font]
+normal = { family = "SimSun-ExtB" }
+size = 20.0
+
+[colors.primary]
+background = "#303030"
+foreground = "#A0A0A0"
+
+[colors.cursor]
+text = "#232323"
+cursor = "#FFFFFF"
+
+[colors.selection]
+text = "#232323"
+background = "#CACACA"
+
+[colors.normal]
+black = "#383838"
+red = "#9b6e6b"
+green = "#777777"
+yellow = "#9b806b"
+blue = "#778060"
+magenta = "#767676"
+cyan = "#b8b8b8"
+white = "#b0b0b0"
+
+[colors.bright]
+black = "#474747"
+red = "#9b7f7d"
+green = "#8c8c8c"
+yellow = "#9b8c7d"
+blue = "#a0b77d"
+magenta = "#a3a3a3"
+cyan = "#cfcfcf"
+white = "#c0c0c0"
