@@ -1,3 +1,4 @@
+vim.g.netrw_liststyle = 3
 vim.opt.guicursor = "i:block"
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
@@ -39,8 +40,8 @@ vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
 vim.keymap.set({ "n", "v" }, "d", '"_d')
   
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
-vim.lsp.enable({
-  "html", "biome", "ts_ls", "svelte", "tailwindcss", "ruff",
-  "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
-})
 vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
+vim.lsp.enable({
+  "html", "biome", "ts_ls", "svelte", "tailwindcss", "prismals",
+  "ruff", "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
+})
