@@ -3,8 +3,8 @@ title = "terminal"
 option_as_alt = "OnlyLeft"
 
 [font]
-normal = { family = "SimSun-ExtB" }
-size = 20.0
+normal = { family = "Paper Mono" }
+size = 16.0
 
 [colors.primary]
 background = "#303030"
