@@ -21,7 +21,11 @@ vim.opt.wildignore:append({ "**/node_modules/*", "**/target/*", "**/dist/*", "**
 vim.keymap.set("n", "<C-e>", ":edit .<CR>")
 vim.keymap.set("n", "<C-p>", ":find ")
 vim.keymap.set("n", "<C-a>", function() vim.diagnostic.setloclist() end)
-vim.keymap.set("n", "<C-s>", function() vim.lsp.buf.format({ filter = function(client) return client.name ~= "ts_ls" end }); vim.cmd("w"); vim.cmd("redraw!") end)
+vim.keymap.set("n", "<C-s>", function()
+  vim.lsp.buf.format({ filter = function(client) return client.name ~= "ts_ls" end })
+  vim.cmd("w")
+  vim.cmd("redraw!")
+end)
 vim.keymap.set("n", "<M-h>", ":vertical resize -5<CR>")
 vim.keymap.set("n", "<M-l>", ":vertical resize +5<CR>")
 vim.keymap.set("n", "<M-j>", ":horizontal resize -5<CR>")
@@ -40,8 +44,8 @@ vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
 vim.keymap.set({ "n", "v" }, "d", '"_d')
   
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
-vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
 vim.lsp.enable({
-  "html", "biome", "ts_ls", "svelte", "tailwindcss", "prismals",
-  "ruff", "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
+  "biome", "ts_ls", "tailwindcss", "prismals", "ruff", "ty",
+  "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
 })
+vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
