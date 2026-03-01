@@ -22,7 +22,9 @@ return {
         brights = {"#474747", "#9b7f7d", "#8c8c8c", "#9b8c7d", "#a0b77d", "#a3a3a3", "#cfcfcf", "#c0c0c0"}
     },
     font = w.font("Paper Mono"),
-    font_size = w.target_triple:find("windows") and 13 or 16,
+    font_size = w.target_triple:find("windows") and 11 or 16,
     default_prog = w.target_triple:find("windows") and {"powershell.exe", "-NoLogo"}
 }
+
+
 
