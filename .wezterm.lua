@@ -25,6 +25,3 @@ return {
     font_size = w.target_triple:find("windows") and 11 or 16,
     default_prog = w.target_triple:find("windows") and {"powershell.exe", "-NoLogo"}
 }
-
-
-

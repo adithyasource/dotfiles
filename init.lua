@@ -18,7 +18,7 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.path:append("**")
 vim.opt.wildignore:append({ "**/node_modules/*", "**/target/*", "**/dist/*", "**/builds/*" })
 
-vim.keymap.set("n", "<C-e>", ":edit .<CR>")
+vim.keymap.set("n", "<C-e>", ":lua MiniFiles.open()<CR>")
 vim.keymap.set("n", "<C-p>", ":find ")
 vim.keymap.set("n", "<C-a>", function() vim.diagnostic.setloclist() end)
 vim.keymap.set("n", "<C-s>", function()
@@ -43,9 +43,15 @@ vim.keymap.set({ "n", "v" }, "<C-j>", "5j")
 vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
 vim.keymap.set({ "n", "v" }, "d", '"_d')
   
-vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
+vim.pack.add({
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/nvim-mini/mini.nvim"
+})
 vim.lsp.enable({
-  "biome", "ts_ls", "tailwindcss", "prismals", "ruff", "ty",
-  "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
+  "biome", "ts_ls", "tailwindcss", "prismals", "astro",
+  "ruff", "ty", "clangd", "gopls", "rust_analyzer",
+  "glsl_analyzer"
 })
 vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
+
+require('mini.files').setup()
