@@ -45,7 +45,7 @@ vim.keymap.set({ "n", "v" }, "d", '"_d')
   
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/nvim-mini/mini.nvim"
+  "https://github.com/nvim-mini/mini.files"
 })
 vim.lsp.enable({
   "biome", "ts_ls", "tailwindcss", "prismals", "astro",
