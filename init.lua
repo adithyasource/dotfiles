@@ -15,17 +15,15 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.cmdheight = 0
 vim.opt.clipboard:append("unnamedplus")
-vim.opt.path:append("**")
-vim.opt.wildignore:append({ "**/node_modules/*", "**/target/*", "**/dist/*", "**/builds/*" })
 
-vim.keymap.set("n", "<C-e>", ":lua MiniFiles.open()<CR>")
-vim.keymap.set("n", "<C-p>", ":find ")
-vim.keymap.set("n", "<C-a>", function() vim.diagnostic.setloclist() end)
 vim.keymap.set("n", "<C-s>", function()
   vim.lsp.buf.format({ filter = function(client) return client.name ~= "ts_ls" end })
   vim.cmd("w")
   vim.cmd("redraw!")
 end)
+vim.keymap.set("n", "<C-e>", ":lua MiniFiles.open()<CR>")
+vim.keymap.set("n", "<C-p>", ":Pick files<CR>")
+vim.keymap.set("n", "<C-f>", ":Pick grep_live<CR>")
 vim.keymap.set("n", "<M-h>", ":vertical resize -5<CR>")
 vim.keymap.set("n", "<M-l>", ":vertical resize +5<CR>")
 vim.keymap.set("n", "<M-j>", ":horizontal resize -5<CR>")
@@ -42,16 +40,20 @@ vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 vim.keymap.set({ "n", "v" }, "<C-j>", "5j")
 vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
 vim.keymap.set({ "n", "v" }, "d", '"_d')
-  
+ 
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/nvim-mini/mini.files"
+  "https://github.com/nvim-mini/mini.files",
+  "https://github.com/nvim-mini/mini.pick"
 })
 vim.lsp.enable({
   "biome", "ts_ls", "tailwindcss", "prismals", "astro",
   "ruff", "ty", "clangd", "gopls", "rust_analyzer",
   "glsl_analyzer"
 })
-vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
+vim.filetype.add({
+  extension = { vsh = "glsl", fsh = "glsl" }
+})
 
 require('mini.files').setup()
+require('mini.pick').setup()
