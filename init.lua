@@ -51,8 +51,8 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.pick"
 })
 vim.lsp.enable({
-  "biome", "ts_ls", "tailwindcss", "prismals", "astro", "ruff", "ty", "clangd",
-  "gopls", "rust_analyzer", "glsl_analyzer"
+  "biome", "ts_ls", "tailwindcss", "prismals", "astro", "svelte", "ruff", "ty",
+  "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
 })
 
 require('mini.files').setup()
