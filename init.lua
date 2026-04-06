@@ -20,20 +20,16 @@ vim.opt.wildignore:append({ "**/node_modules/*", "**/target/*", "**/dist/*", "**
 vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { reverse = true })
 vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
 
-vim.keymap.set("n", "<C-s>", function()
-  vim.lsp.buf.format({ filter = function(client) return client.name ~= "ts_ls" end })
-  vim.cmd("w")
-  vim.cmd("redraw!")
-end)
+vim.keymap.set("n", "<C-s>", function() vim.lsp.buf.format(); vim.cmd("w") end)
 vim.keymap.set("n", "<C-e>", function() MiniFiles.open() end)
 vim.keymap.set("n", "<C-p>", function() MiniPick.builtin.files() end)
 vim.keymap.set("n", "<C-f>", function() MiniPick.builtin.grep_live() end)
-vim.keymap.set("n", "<M-h>", ":vertical resize -5<CR>")
-vim.keymap.set("n", "<M-l>", ":vertical resize +5<CR>")
-vim.keymap.set("n", "<M-j>", ":horizontal resize -5<CR>")
-vim.keymap.set("n", "<M-k>", ":horizontal resize +5<CR>")
-vim.keymap.set("n", "<M-H>", "20zh")
-vim.keymap.set("n", "<M-L>", "20zl")
+vim.keymap.set("n", "<M-h>", ":vertical resize -3<CR>")
+vim.keymap.set("n", "<M-l>", ":vertical resize +3<CR>")
+vim.keymap.set("n", "<M-j>", ":horizontal resize -3<CR>")
+vim.keymap.set("n", "<M-k>", ":horizontal resize +3<CR>")
+vim.keymap.set("n", "<M-H>", "5zh")
+vim.keymap.set("n", "<M-L>", "5zl")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv")
 vim.keymap.set("v", "D", "<del>")
@@ -51,8 +47,13 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.pick"
 })
 vim.lsp.enable({
-  "biome", "ts_ls", "tailwindcss", "prismals", "astro", "svelte", "ruff", "ty",
-  "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
+  "biome", "ts_ls", "tailwindcss", "prismals", "astro", "svelte",
+  "ruff", "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
+})
+vim.lsp.config("ts_ls", {
+  on_attach = function(c)
+    c.server_capabilities.documentFormattingProvider = false
+  end,
 })
 
 require('mini.files').setup()
