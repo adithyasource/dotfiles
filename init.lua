@@ -45,7 +45,8 @@ vim.keymap.set({ "n", "v" }, "d", '"_d')
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/nvim-mini/mini.files",
-  "https://github.com/nvim-mini/mini.pick"
+  "https://github.com/nvim-mini/mini.pick",
+  "https://github.com/nvim-mini/mini.diff"
 })
 vim.lsp.enable({
   "biome", "ts_ls", "tailwindcss", "prismals", "astro", "svelte",
@@ -59,3 +60,4 @@ vim.lsp.config("ts_ls", {
 
 require('mini.files').setup()
 require('mini.pick').setup()
+require('mini.diff').setup()
