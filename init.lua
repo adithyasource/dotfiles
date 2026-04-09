@@ -48,7 +48,7 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.files",
   "https://github.com/nvim-mini/mini.pick",
   "https://github.com/nvim-mini/mini.diff",
-  "https://github.com/adithyasource/spearmint",
+  "https://github.com/adithyasource/spearmint.nvim",
 })
 vim.lsp.enable({
   "biome", "ts_ls", "tailwindcss", "prismals", "astro", "svelte", "ruff",
