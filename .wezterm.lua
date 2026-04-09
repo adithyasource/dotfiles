@@ -4,8 +4,9 @@ local is_win = w.target_triple:find("windows")
 w.on("format-window-title", function() return "terminal" end)
 
 return {
-  window_padding = {left = 0, right = 0, top = 0, bottom = 0},
+  window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
   hide_tab_bar_if_only_one_tab = true,
+  use_fancy_tab_bar = false,
   initial_cols = 90,
   initial_rows = 30,
   colors = {
@@ -27,5 +28,5 @@ return {
   },
   font = w.font("Paper Mono"),
   font_size = is_win and 11 or 16,
-  default_prog = is_win and {"powershell.exe", "-NoLogo"}
+  default_prog = is_win and { "powershell.exe", "-NoLogo" }
 }
