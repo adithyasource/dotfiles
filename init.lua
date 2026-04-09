@@ -42,16 +42,17 @@ vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 vim.keymap.set({ "n", "v" }, "<C-j>", "5j")
 vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
 vim.keymap.set({ "n", "v" }, "d", '"_d')
- 
+
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/nvim-mini/mini.files",
   "https://github.com/nvim-mini/mini.pick",
-  "https://github.com/nvim-mini/mini.diff"
+  "https://github.com/nvim-mini/mini.diff",
+  "https://github.com/adithyasource/spearmint",
 })
 vim.lsp.enable({
-  "biome", "ts_ls", "tailwindcss", "prismals", "astro", "svelte",
-  "ruff", "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer"
+  "biome", "ts_ls", "tailwindcss", "prismals", "astro", "svelte", "ruff",
+  "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer", "lua_ls"
 })
 vim.lsp.config("ts_ls", {
   on_attach = function(c)
@@ -62,3 +63,4 @@ vim.lsp.config("ts_ls", {
 require('mini.files').setup()
 require('mini.pick').setup()
 require('mini.diff').setup()
+require('spearmint').setup()
