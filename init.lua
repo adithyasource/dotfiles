@@ -18,6 +18,9 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.path:append("**")
 vim.opt.wildignore:append({ "**/node_modules/*", "**/target/*", "**/dist/*", "**/builds/*" })
 vim.opt.shell = (vim.loop.os_uname().sysname == "Windows_NT") and "powershell" or "/bin/zsh"
+vim.opt.autocomplete = true
+vim.opt.complete:append("o")
+vim.opt.completeopt = { "menuone", "noselect" }
 vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { reverse = true })
 vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
 
@@ -38,8 +41,6 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv")
 vim.keymap.set("v", "D", "<del>")
 vim.keymap.set("x", "p", '"_dP')
-vim.keymap.set("i", "<C-n>", "<C-x><C-o>")
-vim.keymap.set("i", "<C-b>", "<C-x><C-n>")
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>")
 vim.keymap.set({ "n", "v" }, "<C-j>", "5j")
 vim.keymap.set({ "n", "v" }, "<C-k>", "5k")
