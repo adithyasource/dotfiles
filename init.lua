@@ -1,4 +1,3 @@
-vim.g.netrw_liststyle = 3
 vim.opt.guicursor = "i:block"
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
@@ -15,9 +14,7 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.cmdheight = 0
 vim.opt.clipboard:append("unnamedplus")
-vim.opt.path:append("**")
 vim.opt.wildignore:append({ "**/node_modules/*", "**/target/*", "**/dist/*", "**/builds/*" })
-vim.opt.shell = (vim.loop.os_uname().sysname == "Windows_NT") and "powershell" or "/bin/zsh"
 vim.opt.autocomplete = true
 vim.opt.complete:append("o")
 vim.opt.completeopt = { "menuone", "noselect" }
@@ -28,7 +25,6 @@ vim.keymap.set("n", "<C-s>", function() vim.lsp.buf.format(); vim.cmd("w") end)
 vim.keymap.set("n", "<C-e>", function() MiniFiles.open() end)
 vim.keymap.set("n", "<C-p>", function() MiniPick.builtin.files() end)
 vim.keymap.set("n", "<C-f>", function() MiniPick.builtin.grep_live() end)
-vim.keymap.set("n", "<C-g>", function() vim.b.minidiff_disable = not vim.b.minidiff_disable; vim.cmd("edit") end)
 vim.keymap.set("n", "m", function() Spearmint.set_mark() end)
 vim.keymap.set("n", "'", function() Spearmint.jump() end)
 vim.keymap.set("n", "<M-h>", ":vertical resize -3<CR>")
@@ -51,19 +47,21 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.files",
   "https://github.com/nvim-mini/mini.pick",
   "https://github.com/nvim-mini/mini.diff",
-  "https://github.com/adithyasource/spearmint.nvim",
+  "https://github.com/adithyasource/spearmint.nvim"
 })
 vim.lsp.enable({
-  "biome", "ts_ls", "tailwindcss", "prismals", "astro", "svelte", "ruff",
-  "ty", "clangd", "gopls", "rust_analyzer", "glsl_analyzer", "lua_ls"
+  "biome", "ts_ls", "tailwindcss", "prismals", "astro",
+  "svelte", "ruff", "ty", "clangd", "gopls", "rust_analyzer",
+  "glsl_analyzer", "lua_ls"
 })
 vim.lsp.config("ts_ls", {
   on_attach = function(c)
     c.server_capabilities.documentFormattingProvider = false
-  end,
+  end
 })
 
 require('mini.files').setup()
 require('mini.pick').setup()
 require('mini.diff').setup()
 require('spearmint').setup()
+require('vim._core.ui2').enable({})
