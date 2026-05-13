@@ -17,11 +17,13 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.wildignore:append({ "**/node_modules/*", "**/target/*", "**/dist/*", "**/builds/*" })
 vim.opt.autocomplete = true
 vim.opt.complete:append("o")
-vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "fuzzy", "popup" }
 vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { reverse = true })
 vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
 
-vim.keymap.set("n", "<C-s>", function() vim.lsp.buf.format(); vim.cmd("w") end)
+vim.keymap.set("n", "<C-s>", function()
+  vim.lsp.buf.format(); vim.cmd("w")
+end)
 vim.keymap.set("n", "<C-e>", function() MiniFiles.open() end)
 vim.keymap.set("n", "<C-p>", function() MiniPick.builtin.files() end)
 vim.keymap.set("n", "<C-f>", function() MiniPick.builtin.grep_live() end)
@@ -64,4 +66,3 @@ require('mini.files').setup()
 require('mini.pick').setup()
 require('mini.diff').setup()
 require('spearmint').setup()
-require('vim._core.ui2').enable({})
