@@ -3,9 +3,22 @@ local is_win = w.target_triple:find("windows")
 
 w.on("format-window-title", function() return "terminal" end)
 
+local function activate_or_create_tab(index)
+  return w.action_callback(function(window, pane)
+    local mux_window = window:mux_window()
+    local tabs = mux_window:tabs()
+
+    if tabs[index + 1] then
+      window:perform_action(w.action.ActivateTab(index), pane)
+    else
+      window:perform_action(w.action.SpawnTab("CurrentPaneDomain"), pane)
+      window:perform_action(w.action.ActivateTab(index), pane)
+    end
+  end)
+end
+
 return {
   window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
-  hide_tab_bar_if_only_one_tab = true,
   use_fancy_tab_bar = false,
   initial_cols = 90,
   initial_rows = 30,
@@ -27,6 +40,29 @@ return {
     }
   },
   font = w.font("Paper Mono"),
-  font_size = is_win and 11 or 16,
-  default_prog = is_win and { "powershell.exe", "-NoLogo" }
+  font_size = is_win and 10 or 16,
+  default_prog = is_win and { "powershell.exe", "-NoLogo" },
+  enable_tab_bar = false,
+  keys = {
+    {
+      key = "q",
+      mods = "ALT",
+      action = activate_or_create_tab(0),
+    },
+    {
+      key = "a",
+      mods = "ALT",
+      action = activate_or_create_tab(1),
+    },
+    {
+      key = "s",
+      mods = "ALT",
+      action = activate_or_create_tab(2),
+    },
+    {
+      key = "d",
+      mods = "ALT",
+      action = activate_or_create_tab(3),
+    },
+  },
 }
