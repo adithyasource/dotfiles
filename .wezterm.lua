@@ -11,7 +11,16 @@ local function activate_or_create_tab(index)
     if tabs[index + 1] then
       window:perform_action(w.action.ActivateTab(index), pane)
     else
-      window:perform_action(w.action.SpawnTab("CurrentPaneDomain"), pane)
+      local cwd_uri = pane:get_current_working_dir()
+      local cwd = cwd_uri and cwd_uri.file_path
+
+      window:perform_action(
+        w.action.SpawnCommandInNewTab({
+          cwd = cwd,
+        }),
+        pane
+      )
+
       window:perform_action(w.action.ActivateTab(index), pane)
     end
   end)
