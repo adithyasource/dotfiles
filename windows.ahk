@@ -1,3 +1,11 @@
+#SingleInstance Force
+
+if not A_IsAdmin
+{
+    Run *RunAs "%A_ScriptFullPath%"
+    ExitApp
+}
+
 SetCapsLockState, AlwaysOff
 RAlt & Space::Send, {Media_Play_Pause}
 ^!Left::Send, {Media_Prev}
@@ -5,6 +13,7 @@ RAlt & Space::Send, {Media_Play_Pause}
 ^!M::Send, {Volume_Mute}
 RShift::Send, {Volume_Up}
 RCtrl::Send, {Volume_Down}
+
 ^+Space::
     WinGetTitle, ActiveWindow, A
     WinSet, AlwaysOnTop, , A
