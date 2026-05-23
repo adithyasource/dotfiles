@@ -104,6 +104,14 @@
             },
             "to": [{ "key_code": "vk_none" }],
             "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "tab",
+                "modifiers": { "mandatory": ["left_option"] }
+            },
+            "to": [{ "apple_vendor_keyboard_key_code": "mission_control" }],
+            "type": "basic"
         }
     ]
 }
