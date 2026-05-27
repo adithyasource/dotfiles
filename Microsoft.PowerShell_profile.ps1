@@ -5,11 +5,8 @@ function cdd {
   cd "D:\DEVELOP\"
 }
 
-function prompt {
-  $p = $PWD.Path -replace '\\', '/'
-  [Console]::Write("$([char]27)]7;file:///$p$([char]27)\")
-  # call the original default prompt logic
-  "PS $($PWD.Path)> "
+function pwsync {
+  rclone copy D:\PASSWORDS\Passwords.kdbx passwords:passwords
 }
 
 function rmrf {
