@@ -30,7 +30,7 @@ return {
   initial_cols = 90,
   initial_rows = 30,
   colors = {
-    foreground = "#A0A0A0",
+    foreground = "#B5B5B5",
     background = "#303030",
     cursor_bg = "#FFFFFF",
     cursor_fg = "#232323",
@@ -39,11 +39,11 @@ return {
     selection_fg = "#232323",
     ansi = {
       "#383838", "#9b6e6b", "#777777", "#9b806b",
-      "#778060", "#767676", "#b8b8b8", "#b0b0b0"
+      "#778060", "#767676", "#b8b8b8", "#C8C8C8"
     },
     brights = {
       "#474747", "#9b7f7d", "#8c8c8c", "#9b8c7d",
-      "#a0b77d", "#a3a3a3", "#cfcfcf", "#c0c0c0"
+      "#a0b77d", "#a3a3a3", "#d8d8d8", "#D8D8D8"
     }
   },
   font = w.font("Paper Mono"),
