@@ -3,6 +3,8 @@ alias ls="ls -ap"
 alias spotx-refresh="bash <(curl -sSL https://raw.githubusercontent.com/SpotX-Official/SpotX-Bash/main/spotx.sh)"
 alias gsrc="switch_account ~/.ssh/adithyasrc 'adithyasource' 'adithyasrc@gmail.com'"
 alias gnst="switch_account ~/.ssh/adithyanst 'adithyanst' 'pampana.adithya2024@nst.rishihood.edu.in'"
+bindkey '^R' history-incremental-search-backward
+bindkey '^T' history-incremental-search-forward
 
 switch_account() {
   ssh-add -D
