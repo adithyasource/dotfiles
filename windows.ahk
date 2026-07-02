@@ -13,6 +13,7 @@ RAlt & Space::Send, {Media_Play_Pause}
 ^!M::Send, {Volume_Mute}
 RShift::Send, {Volume_Up}
 RCtrl::Send, {Volume_Down}
+#g::Run, sndvol.exe
 
 ^+Space::
     WinGetTitle, ActiveWindow, A
