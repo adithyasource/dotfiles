@@ -13,7 +13,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.cmdheight = 0
-vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard = "unnamedplus"
 vim.opt.wildignore:append({ "**/node_modules/*", "**/target/*", "**/dist/*", "**/builds/*" })
 vim.api.nvim_set_hl(0, "MiniPickMatchCurrent", { reverse = true })
 vim.filetype.add({ extension = { vsh = "glsl", fsh = "glsl" } })
@@ -59,6 +59,12 @@ vim.lsp.config("ts_ls", {
   on_attach = function(c)
     c.server_capabilities.documentFormattingProvider = false
   end
+})
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    local copy_to_unnamedplus = require("vim.ui.clipboard.osc52").copy("+")
+    copy_to_unnamedplus(vim.v.event.regcontents)
+  end,
 })
 
 require('mini.files').setup()
