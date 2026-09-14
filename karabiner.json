@@ -102,7 +102,12 @@
                 "key_code": "q",
                 "modifiers": { "mandatory": ["left_command"] }
             },
-            "to": [{ "key_code": "vk_none" }],
+            "to": [
+                {
+                    "key_code": "m",
+                    "modifiers": ["left_command"]
+                }
+            ],
             "type": "basic"
         },
         {
