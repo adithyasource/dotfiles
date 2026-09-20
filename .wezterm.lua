@@ -46,7 +46,7 @@ return {
       "#a0b77d", "#a3a3a3", "#d8d8d8", "#D8D8D8"
     }
   },
-  font = w.font("Paper Mono"),
+  font = w.font("ABC Areal Mono"),
   font_size = is_win and 10 or 16,
   default_prog = is_win and { "powershell.exe", "-NoLogo" },
   enable_tab_bar = false,
