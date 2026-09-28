@@ -5,6 +5,7 @@ alias gsrc="switch_account ~/.ssh/adithyasrc 'adithyasource' 'adithyasrc@gmail.c
 alias gnst="switch_account ~/.ssh/adithyanst 'adithyanst' 'pampana.adithya2024@nst.rishihood.edu.in'"
 bindkey '^R' history-incremental-search-backward
 bindkey '^T' history-incremental-search-forward
+PROMPT='%m %1~ %# '
 
 switch_account() {
   ssh-add -D
